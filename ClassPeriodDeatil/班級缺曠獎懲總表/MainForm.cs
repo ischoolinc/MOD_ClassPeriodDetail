@@ -171,44 +171,64 @@ namespace ClassPeriodDetail
 
             foreach (SHMeritRecord each in SHMerit.SelectByStudentIDs(StudentIDList))
             {
-                if (_Semester == 1)
-                {
-                    if (each.SchoolYear != _Schoolyear || each.Semester != _Semester)
-                        continue;
-                }
+                //if (_Semester == 1)
+                //{
+                //    if (each.SchoolYear != _Schoolyear || each.Semester != _Semester)
+                //        continue;
+                //}
+                //else
+                //{
+                //    if (each.SchoolYear != _Schoolyear) continue;
+                //}
+
+                if (each.SchoolYear != _Schoolyear || each.Semester != _Semester)
+                { continue; }
                 else
                 {
-                    if (each.SchoolYear != _Schoolyear) continue;
+                    MeritDemeritAttDic[each.RefStudentID].MeritACount += each.MeritA.HasValue ? each.MeritA.Value : 0;
+                    MeritDemeritAttDic[each.RefStudentID].MeritBCount += each.MeritB.HasValue ? each.MeritB.Value : 0;
+                    MeritDemeritAttDic[each.RefStudentID].MeritCCount += each.MeritC.HasValue ? each.MeritC.Value : 0;
                 }
-
-                MeritDemeritAttDic[each.RefStudentID].MeritACount += each.MeritA.HasValue ? each.MeritA.Value : 0;
-                MeritDemeritAttDic[each.RefStudentID].MeritBCount += each.MeritB.HasValue ? each.MeritB.Value : 0;
-                MeritDemeritAttDic[each.RefStudentID].MeritCCount += each.MeritC.HasValue ? each.MeritC.Value : 0;
             }
 
             //懲罰紀錄
             foreach (SHDemeritRecord each in SHDemerit.SelectByStudentIDs(StudentIDList))
             {
-                if (_Semester == 1)
-                {
-                    if (each.SchoolYear != _Schoolyear || each.Semester != _Semester)
-                        continue;
-                }
+                //if (_Semester == 1)
+                //{
+                //    if (each.SchoolYear != _Schoolyear || each.Semester != _Semester)
+                //        continue;
+                //}
+                //else
+                //{
+                //    if (each.SchoolYear != _Schoolyear) continue;
+                //}
+
+                if (each.SchoolYear != _Schoolyear || each.Semester != _Semester)
+                { continue; }
                 else
                 {
-                    if (each.SchoolYear != _Schoolyear) continue;
-                }
+                    if (each.Cleared == "是")
+                        continue;
 
-                if (each.Cleared == "是")
-                    continue;
+
+                    if (each.SchoolYear != _Schoolyear || each.Semester != _Semester)
+                    { continue; }
+                    else
+                    {
+                        MeritDemeritAttDic[each.RefStudentID].DemeritACount += each.DemeritA.HasValue ? each.DemeritA.Value : 0;
+                        MeritDemeritAttDic[each.RefStudentID].DemeritBCount += each.DemeritB.HasValue ? each.DemeritB.Value : 0;
+                        MeritDemeritAttDic[each.RefStudentID].DemeritCCount += each.DemeritC.HasValue ? each.DemeritC.Value : 0;
+                    }
+                }
 
                 //留查紀錄
                 if (each.MeritFlag == "2")
                     MeritDemeritAttDic[each.RefStudentID].Flag = true;
 
-                MeritDemeritAttDic[each.RefStudentID].DemeritACount += each.DemeritA.HasValue ? each.DemeritA.Value : 0;
-                MeritDemeritAttDic[each.RefStudentID].DemeritBCount += each.DemeritB.HasValue ? each.DemeritB.Value : 0;
-                MeritDemeritAttDic[each.RefStudentID].DemeritCCount += each.DemeritC.HasValue ? each.DemeritC.Value : 0;
+                //MeritDemeritAttDic[each.RefStudentID].DemeritACount += each.DemeritA.HasValue ? each.DemeritA.Value : 0;
+                //MeritDemeritAttDic[each.RefStudentID].DemeritBCount += each.DemeritB.HasValue ? each.DemeritB.Value : 0;
+                //MeritDemeritAttDic[each.RefStudentID].DemeritCCount += each.DemeritC.HasValue ? each.DemeritC.Value : 0;
             }
 
             //取得節次對照表
@@ -297,7 +317,7 @@ namespace ClassPeriodDetail
 
             for (int i = 0; i < _AbsenceType.Count; i++) //依照勾選的顯示清單數量插入新的欄位
             {
-                prototypeSheet.Cells.InsertColumn(_DynamicIndex+1);
+                prototypeSheet.Cells.InsertColumn(_DynamicIndex + 1);
             }
 
             //刪除兩個範本格式Column
@@ -340,12 +360,12 @@ namespace ClassPeriodDetail
                 //prototypeSheet.Cells[2, columnIndexTable[str]].PutValue(strs[1]); //列印標題...ex:曠課
                 //if (!mergeIndex.ContainsKey(strs[0])) //若是相同title,則數量加1
                 //{
-                    //mergeIndex.Add(strs[0], 0);
+                //mergeIndex.Add(strs[0], 0);
                 //}
                 //mergeIndex[strs[0]]++; //若是相同title,則數量加1
             }
 
-            
+
             //int start = _DynamicIndex; //merge的起始值
             //foreach (String s in mergeIndex.Keys)
             //{
@@ -496,7 +516,7 @@ namespace ClassPeriodDetail
             //    _WK.Worksheets[i].AutoFitColumns();
             //    _WK.Worksheets[i].AutoFitRows();
             //}
-                BGW.ReportProgress(100, "已完成 班級缺曠獎懲總表");
+            BGW.ReportProgress(100, "已完成 班級缺曠獎懲總表");
 
             #endregion
         }

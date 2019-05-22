@@ -119,12 +119,12 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="班級缺曠獎懲總表A3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\班級缺曠獎懲總表A3.xls;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\resources\班級缺曠獎懲總表a3.xls;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="班級缺曠獎懲總表A4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\班級缺曠獎懲總表A4.xls;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\resources\班級缺曠獎懲總表a4.xls;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="班級缺曠獎懲總表B4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\班級缺曠獎懲總表B4.xls;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\resources\班級缺曠獎懲總表b4.xls;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
